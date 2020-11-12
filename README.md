@@ -1,5 +1,7 @@
 <div align="center">
     <h1>wfetch</h1>
+    <img src="https://i.imgur.com/754LO17.png" alt="wfetch 0.1">
+    <br>
     A small (~100 lines of code) terminal weather fetch tool written in Python.
 </div>
 
@@ -20,3 +22,6 @@ sudo ln -s /path/to/wfetch/wfetch.py /usr/bin/wfetch
 2. Go to [API keys](https://home.openweathermap.org/api_keys) section in your account settings
 3. Update in ```config.py``` ```api``` and ```city``` parameters 
 4. Also, optionally update other parameters to set proper for you description language and measurement units
+
+## Thanks
+* [wego](https://github.com/schachmat/wego) for providing ASCII weather icons
