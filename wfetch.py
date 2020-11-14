@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 
 wfetch - show weather in your terminal (version 0.1)
@@ -77,6 +78,23 @@ def viewAscii():
     return icon
 
 
+# Checks which measurement unit to use
+def unitCheck():
+    if cfg.unit == "standard":
+        tempUnit = "K"
+        speedUnit = "m/s"
+    elif cfg.unit == "metric":
+        tempUnit = "°C"
+        speedUnit = "m/s"
+    elif cfg.unit == "imperial":
+        tempUnit = "°F"
+        speedUnit = "mph"
+    return tempUnit, speedUnit
+
+
+tempUnit, speedUnit = unitCheck()
+
+
 # Prints ascii image and weather info.
 def printInfo():
     mainGroup = source['main']
@@ -95,10 +113,11 @@ def printInfo():
         print(i)
     print(f"Weather in {cfg.city}")
     print(f"Description: {desc}")
-    print(f"Temperature: {str(temp)}°C")
+    print(f"Temperature: {str(temp)}{tempUnit}")
     print(f"Humidity: {str(humidity)}%")
-    print(f"Wind: {str(speed)} m/s")
+    print(f"Wind: {str(speed)} {speedUnit}")
 
 
 os.system("clear")
 printInfo()
+input("")
