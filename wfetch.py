@@ -105,7 +105,7 @@ def printInfo() -> None:
     desc = descGroup['description']
 
     viewAscii()
-    print("""
+    print(f"""
 Weather in {cfg.city}
 Description: {desc}
 Temperature: {str(temp)}{tempUnit}
