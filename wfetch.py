@@ -16,7 +16,7 @@ import config as cfg
 
 
 # Fetches raw data from OpenWeatherMap API and converts it to JSON list.
-def fetchData():
+def fetchData() -> str:
     j = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={cfg.city}&APPID={cfg.api}&units={cfg.unit}&lang={cfg.lang}")
 
     source = j.json()
@@ -43,43 +43,40 @@ source = fetchData()
 # Returns ascii image. 
 # ascii weather art used from wego project: https://github.com/schachmat/wego
 #pylint: disable=anomalous-backslash-in-string
-def viewAscii():
+def viewAscii() -> None :
     iconName = source['weather'][0]['main']
     if iconName == "Clear":
-        icon = ["      \   /    ", 
-                "       .-.     ", 
-                "    ‒ (   ) ‒  ", 
-                "       `-᾿     ", 
-                "      /   \    ", 
-                "               "]
+        print("      \   /    ", 
+              "       .-.     ", 
+              "    ‒ (   ) ‒  ", 
+              "       `-᾿     ", 
+              "      /   \    ", 
+              "               ", sep = '\n')
     elif iconName == "Clouds":
-        icon = ["       .--.     ", 
-                "    .-(    ).   ", 
-                "   (___.__)__)  ", 
-                "                "]
+        print("       .--.     ", 
+              "    .-(    ).   ", 
+              "   (___.__)__)  ", 
+              "                ", sep = '\n')
     elif iconName == "Rain":
-        icon = ["       .--.     ", 
-                "    .-(    ).   ", 
-                "   (___.__)__)  ", 
-                "   ʻ‚ʻ‚ʻ‚ʻ‚ʻ‚   ", 
-                "                "]
+        print("       .--.     ", 
+              "    .-(    ).   ", 
+              "   (___.__)__)  ", 
+              "   ʻ‚ʻ‚ʻ‚ʻ‚ʻ‚   ", 
+              "                ", sep = '\n')
     elif iconName == "Snow":
-        icon = ["       .--.     ", 
-                "    .-(    ).   ", 
-                "   (___.__)__)  ", 
-                "    * * * * *   ", 
-                "                "]
+        print("       .--.     ", 
+              "    .-(    ).   ", 
+              "   (___.__)__)  ", 
+              "    * * * * *   ", 
+              "                ", sep = '\n')
     else:
-        icon = ["       .--.     ", 
-                "    .-(    ).   ", 
-                "   (___.__)__)  ", 
-                "                "]
-
-    return icon
-
+        print("       .--.     ", 
+              "    .-(    ).   ", 
+              "   (___.__)__)  ", 
+              "                ", sep = '\n')
 
 # Checks which measurement unit to use
-def unitCheck():
+def unitCheck() -> str:
     if cfg.unit == "standard":
         tempUnit = "K"
         speedUnit = "m/s"
@@ -96,7 +93,7 @@ tempUnit, speedUnit = unitCheck()
 
 
 # Prints ascii image and weather info.
-def printInfo():
+def printInfo() -> None:
     mainGroup = source['main']
     temp = mainGroup['temp']
     humidity = mainGroup['humidity']
@@ -107,16 +104,14 @@ def printInfo():
     descGroup = source['weather'][0]
     desc = descGroup['description']
 
-    icon = viewAscii()
-
-    for i in icon:
-        print(i)
-    print(f"Weather in {cfg.city}")
-    print(f"Description: {desc}")
-    print(f"Temperature: {str(temp)}{tempUnit}")
-    print(f"Humidity: {str(humidity)}%")
-    print(f"Wind: {str(speed)} {speedUnit}")
-
+    viewAscii()
+    print("""
+Weather in {cfg.city}
+Description: {desc}
+Temperature: {str(temp)}{tempUnit}
+Humidity: {str(humidity)}%
+Wind: {str(speed)} {speedUnit}
+""")
 
 os.system("clear")
 printInfo()
