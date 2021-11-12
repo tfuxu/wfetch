@@ -43,7 +43,7 @@ source = fetchData()
 # Returns ascii image. 
 # ascii weather art used from wego project: https://github.com/schachmat/wego
 #pylint: disable=anomalous-backslash-in-string
-def viewAscii() -> None :
+def viewAscii() -> None:
     iconName = source['weather'][0]['main']
     if iconName == "Clear":
         print("      \   /    ", 
@@ -105,13 +105,13 @@ def printInfo() -> None:
     desc = descGroup['description']
 
     viewAscii()
-    print(f"""
-Weather in {cfg.city}
-Description: {desc}
-Temperature: {str(temp)}{tempUnit}
-Humidity: {str(humidity)}%
-Wind: {str(speed)} {speedUnit}
-""")
+    
+    print(f"Weather in {cfg.city}",
+          f"Description: {desc}",
+          f"Temperature: {str(temp)}{tempUnit}",
+          f"Humidity: {str(humidity)}%",
+          f"Wind: {str(speed)} {speedUnit}", sep = '\n')
+            
 
 os.system("clear")
 printInfo()
