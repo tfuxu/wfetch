@@ -1,12 +1,12 @@
 <div align="center">
     <h1>wfetch</h1>
-    <img src="https://i.imgur.com/754LO17.png" alt="wfetch 0.1">
+    <img src="https://i.imgur.com/754LO17.png" alt="wfetch 0.1 in terminal">
     <br>
     A small (~100 lines of code) terminal weather fetch tool written in Python.
 </div>
 
 ## Dependencies
-* ```python``` - must be 3.5 or greater
+* ```python``` - must be 3.6 or greater
 * ```requests``` - for fetching raw data from weather APIs
 
 You can install dependencies using this command: ```pip install -r requirements.txt```

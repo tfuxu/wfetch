@@ -14,6 +14,6 @@ city="London"
 
 unit="metric"
 
-# Description language (see: https://openweathermap.org/current for supported languages)
+# Description language (see: https://openweathermap.org/current#multi for supported languages)
 
 lang="en"

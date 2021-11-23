@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
+
 """
 
 wfetch - show weather in your terminal (version 0.1)
-Created by Igor Makarowicz.
 
 """
 
@@ -75,7 +75,7 @@ def viewAscii() -> None:
               "   (___.__)__)  ", 
               "                ", sep = '\n')
 
-# Checks which measurement unit to use
+# Checks which measurement unit to use.
 def unitCheck() -> str:
     if cfg.unit == "standard":
         tempUnit = "K"
@@ -86,6 +86,7 @@ def unitCheck() -> str:
     elif cfg.unit == "imperial":
         tempUnit = "°F"
         speedUnit = "mph"
+        
     return tempUnit, speedUnit
 
 
@@ -113,6 +114,6 @@ def printInfo() -> None:
           f"Wind: {str(speed)} {speedUnit}", sep = '\n')
             
 
-os.system("clear")
+os.system("clear||cls")
 printInfo()
 input("")
